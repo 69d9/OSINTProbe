@@ -1,6 +1,10 @@
 import requests
 import sys
- 
+from colorama import Fore, init
+
+# Initialize colorama
+init(autoreset=True)
+
 print(rf"""
 {Fore.YELLOW}
     Coded By GhosT LulzSec
@@ -24,20 +28,16 @@ hjw \  |         |  /
   o   o   o      o   o    o  
 """)
 
+shape = f"{Fore.BLUE}[{Fore.RED}+{Fore.BLUE}]"
 
-shape = '\033[34m' + "[" +  '\033[91m' + "+" + '\033[34m' + "]"
-
-print(str(shape) + '\033[91m' + " My channel : " + "\033[32m" + "https://t.me/HereMalaria")
-print(str(shape) + '\033[91m' + " My Telegram : " + "\033[32m" + "ww6ww6ww6\n")
-
+print(f"{shape} {Fore.RED}My channel: {Fore.GREEN}https://t.me/HereMalaria")
+print(f"{shape} {Fore.RED}My Telegram: {Fore.GREEN}ww6ww6ww6\n")
 
 if len(sys.argv) != 2:
-    print("")
+    print(f"{Fore.RED}Usage: python {sys.argv[0]} <IP or Domain>")
     sys.exit(1)
 
 ip = sys.argv[1]
-
-
 
 url = f"http://ip-api.com/json/{ip}"
 response = requests.get(url)
@@ -52,16 +52,17 @@ if data["status"] == "success":
     isp = data["isp"]
     status = data["status"]
     timezone = data["timezone"]
-    AS  = data["as"]
+    AS = data["as"]
     org = data["org"]
-    print(str(shape) + '\033[91m'+" status:" + "\033[32m" + f" {status}")
-    print(str(shape) + '\033[91m'+" ISP:" + "\033[32m" + f" {isp} "+'\033[91m' + "as " + "\033[32m" + f"{AS}")
-    print(str(shape) + '\033[91m'+" oragainztions:" + "\033[32m" + f" {org}")
-    print(str(shape) + '\033[91m' +f" Location:" + "\033[32m" + f" {city} , {country}")
-    print(str(shape) + '\033[91m'+" timezone:" + "\033[32m" + f" {timezone} ")
-    print(str(shape) + '\033[91m' + f" Latitude:"+ "\033[32m" + f"{latitude}," '\033[91m' + "Longitude:" "\033[32m" + f"{longitude}")
+    
+    print(f"{shape} {Fore.RED}Status: {Fore.GREEN}{status}")
+    print(f"{shape} {Fore.RED}ISP: {Fore.GREEN}{isp} {Fore.RED}AS: {Fore.GREEN}{AS}")
+    print(f"{shape} {Fore.RED}Organization: {Fore.GREEN}{org}")
+    print(f"{shape} {Fore.RED}Location: {Fore.GREEN}{city}, {country}")
+    print(f"{shape} {Fore.RED}Timezone: {Fore.GREEN}{timezone}")
+    print(f"{shape} {Fore.RED}Latitude: {Fore.GREEN}{latitude}, {Fore.RED}Longitude: {Fore.GREEN}{longitude}")
 else:
     status = data["status"]
-    print('\033[91m'+"status:" + "\033[32m" + f" {status}\n")
-    print('\033[91m' + "Invalid IPv4 address or geolocation not available!!.")
-    print("try type (ip)/24 OR don't make a space")
+    print(f"{Fore.RED}Status: {Fore.GREEN}{status}")
+    print(f"{Fore.RED}Invalid IPv4 address or geolocation not available!")
+    print(f"{Fore.YELLOW}Try entering (ip)/24 or ensure no spaces.")

@@ -18,5 +18,5 @@ git clone https://github.com/69d9/OSINTProbe.git
 cd OSINTProbe
 
 ## Usage
-```bash
+
 python OSINT.py <IP or Domain>
